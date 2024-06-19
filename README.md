@@ -23,7 +23,7 @@ Clone project
 Masuk ke direktori
 
 ```bash
-  cd backendexpress
+  cd backendexpress2
 ```
 
 Install dependensi

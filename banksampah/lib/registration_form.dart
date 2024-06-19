@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:banksampah/api_helper.dart';
+import 'package:banksampah/login_form.dart';
 
 class RegistrationForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -6,6 +8,27 @@ class RegistrationForm extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  final ApiHelper apiHelper = ApiHelper();
+
+  Future<void> register(BuildContext context) async {
+    final String email = _emailController.text;
+    final String password = _passwordController.text;
+
+    try {
+      await apiHelper.register(email, password);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Registrasi Berhasil, Silahkan Login')),
+      );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginForm()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Register failed')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +42,8 @@ class RegistrationForm extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 139, 224, 142),
+              color: Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(255, 251, 25, 1),
-                  blurRadius: 20.0,
-                  offset: Offset(0, 0),
-                ),
-              ],
             ),
             child: Form(
               key: _formKey,
@@ -73,9 +89,7 @@ class RegistrationForm extends StatelessWidget {
                     child: Text('Register'),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Registration')),
-                        );
+                        register(context);
                       }
                     },
                   ),

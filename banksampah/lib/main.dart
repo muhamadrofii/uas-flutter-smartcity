@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'api_helper.dart';
-import 'demo_mw_tab_bar_screen3.dart';
+import 'navbar_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData && snapshot.data != null) {
-            return DemoMWTabBarScreen3();
+            return NavbarScreen();
           } else {
             return HomeScreen();
           }

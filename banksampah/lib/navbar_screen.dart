@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_tab_page.dart';
+import 'edukasi_tab_page.dart';
 import 'maps_tab_page.dart';
-import 'schedule_tab_page.dart';
-import 'notifications_tab_page.dart';
+import 'formdata_tab_page.dart';
+import 'history_tab_page.dart';
 import 'menu_tab_page.dart';
 import 'api_helper.dart';
 import 'home_screen.dart';
@@ -17,19 +17,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DemoMWTabBarScreen3(),
+      home: NavbarScreen(),
     );
   }
 }
 
-class DemoMWTabBarScreen3 extends StatefulWidget {
-  static String tag = "/DemoMWTabBarScreen3";
+class NavbarScreen extends StatefulWidget {
+  static String tag = "/NavbarScreen";
 
   @override
-  _DemoMWTabBarScreen3State createState() => _DemoMWTabBarScreen3State();
+  _NavbarScreenState createState() => _NavbarScreenState();
 }
 
-class _DemoMWTabBarScreen3State extends State<DemoMWTabBarScreen3>
+class _NavbarScreenState extends State<NavbarScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ApiHelper apiHelper = ApiHelper();
@@ -125,10 +125,10 @@ class _DemoMWTabBarScreen3State extends State<DemoMWTabBarScreen3>
         body: TabBarView(
           controller: _tabController,
           children: [
-            HomeTabPage(),
+            EdukasiTabPage(),
             MapsTabPage(),
-            ScheduleTabPage(),
-            NotificationsTabPage(),
+            formSampahPage(),
+            HistoryTabPage(),
             MenuTabPage(),
           ],
         ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'api_helper.dart';
 
-class NotificationsTabPage extends StatefulWidget {
+class HistoryTabPage extends StatefulWidget {
   @override
-  _NotificationsTabPageState createState() => _NotificationsTabPageState();
+  _HistoryTabPageState createState() => _HistoryTabPageState();
 }
 
-class _NotificationsTabPageState extends State<NotificationsTabPage> {
+class _HistoryTabPageState extends State<HistoryTabPage> {
   List<History> _historyList = [];
   bool _isLoading = true;
   final ApiHelper apiHelper = ApiHelper();
@@ -24,9 +24,6 @@ class _NotificationsTabPageState extends State<NotificationsTabPage> {
         _historyList = historyList;
         _isLoading = false;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('History berhasil dimuat')),
-      );
     } catch (e) {
       setState(() {
         _isLoading = false;

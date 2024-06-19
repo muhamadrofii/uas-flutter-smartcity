@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:banksampah/demo_mw_tab_bar_screen3.dart';
+import 'package:banksampah/navbar_screen.dart';
 import 'api_helper.dart';
 
 class LoginForm extends StatelessWidget {
@@ -14,13 +14,16 @@ class LoginForm extends StatelessWidget {
 
     try {
       await apiHelper.login(email, password);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login Berhasil')),
+      );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => DemoMWTabBarScreen3()),
+        MaterialPageRoute(builder: (context) => NavbarScreen()),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed')),
+        SnackBar(content: Text('Login Gagal')),
       );
     }
   }
@@ -37,15 +40,8 @@ class LoginForm extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 16, 254, 210),
+              color: Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 191, 2, 2),
-                  blurRadius: 10.0,
-                  offset: Offset(0, 10),
-                ),
-              ],
             ),
             child: Form(
               key: _formKey,

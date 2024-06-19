@@ -11,17 +11,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeTabPage(),
+      home: EdukasiTabPage(),
     );
   }
 }
 
-class HomeTabPage extends StatefulWidget {
+class EdukasiTabPage extends StatefulWidget {
   @override
-  _HomeTabPageState createState() => _HomeTabPageState();
+  _EdukasiTabPageState createState() => _EdukasiTabPageState();
 }
 
-class _HomeTabPageState extends State<HomeTabPage> {
+class _EdukasiTabPageState extends State<EdukasiTabPage> {
   List<Edukasi> _edukasiList = [];
   bool _isLoading = true;
   final ApiHelper apiHelper = ApiHelper();
@@ -39,9 +39,6 @@ class _HomeTabPageState extends State<HomeTabPage> {
         _edukasiList = edukasiList;
         _isLoading = false;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Data berhasil dimuat')),
-      );
     } catch (e) {
       setState(() {
         _isLoading = false;

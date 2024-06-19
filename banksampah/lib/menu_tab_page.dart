@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'demo_mw_tab_bar_screen3.dart';
+import 'navbar_screen.dart';
 import 'home_screen.dart';
 
 class MenuTabPage extends StatefulWidget {
@@ -9,7 +9,7 @@ class MenuTabPage extends StatefulWidget {
 }
 
 class _MenuTabPageState extends State<MenuTabPage> {
-  bool _darkMode = false;
+  // bool _darkMode = false;
 
   Future<void> _showLogoutDialog() async {
     return showDialog<void>(

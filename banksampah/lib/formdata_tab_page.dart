@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'api_helper.dart';
 
-class ScheduleTabPage extends StatelessWidget {
+class formSampahPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SETOR SAMPAH'),
+        title: Text('Setor Sampah'),
         automaticallyImplyLeading: false,
       ),
       body: Padding(
@@ -51,10 +51,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
         if (response.statusCode == 200) {
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Form submitted successfully')));
-        } else {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('')));
-        }
+        } else {}
       } catch (e) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('An error occurred: $e')));
@@ -71,7 +68,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
           TextFormField(
             controller: _namaController,
             decoration: InputDecoration(
-              labelText: 'Nama',
+              labelText: 'NAMA',
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -83,7 +80,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
           TextFormField(
             controller: _alamatController,
             decoration: InputDecoration(
-              labelText: 'Alamat',
+              labelText: 'ALAMAT',
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -95,7 +92,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
           TextFormField(
             controller: _jenisSampahController,
             decoration: InputDecoration(
-              labelText: 'Jenis Sampah',
+              labelText: 'JENIS SAMPAH',
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -107,7 +104,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
           TextFormField(
             controller: _beratController,
             decoration: InputDecoration(
-              labelText: 'Berat (kg)',
+              labelText: 'BERAT * (kg)',
             ),
             keyboardType: TextInputType.number,
             validator: (value) {
@@ -123,7 +120,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
           TextFormField(
             controller: _latitudeController,
             decoration: InputDecoration(
-              labelText: 'Latitude',
+              labelText: 'LATITUDE',
             ),
             keyboardType: TextInputType.number,
             validator: (value) {
@@ -139,7 +136,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
           TextFormField(
             controller: _longitudeController,
             decoration: InputDecoration(
-              labelText: 'Longitude',
+              labelText: 'LONGITUDE',
             ),
             keyboardType: TextInputType.number,
             validator: (value) {
@@ -157,7 +154,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
             child: ElevatedButton.icon(
               onPressed: _submitForm,
               icon: Icon(Icons.save),
-              label: Text('Save'),
+              label: Text('KIRIM'),
             ),
           ),
         ],

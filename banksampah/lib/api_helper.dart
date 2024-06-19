@@ -76,7 +76,7 @@ class History {
 }
 
 class ApiHelper {
-  final String baseUrl = "http://192.168.1.8:3000/users";
+  final String baseUrl = "http://192.168.1.14:3000/users";
   final int tokenExpiryDuration = 3600;
 
   Future<void> saveToken(String token) async {
@@ -123,6 +123,26 @@ class ApiHelper {
       await saveToken(token);
     } else {
       throw Exception('Failed to login');
+    }
+  }
+
+  Future<void> register(String email, String password) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/register'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      // Handle successful registration
+      print('Registration successful');
+    } else {
+      throw Exception('Failed to register');
     }
   }
 
